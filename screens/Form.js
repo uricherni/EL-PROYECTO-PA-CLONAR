@@ -44,13 +44,21 @@ const axios = require('axios');
                                     value={number}
                                     placeholder="Respuesta"
                                     keyboardType="numeric"
+                                    
                                     />
+                                    
                                 </>
+                                
                             )
                         )
+                        
                     }
                 </ScrollView>
+                <> <TouchableOpacity   style={styles.Enviar}>
+                            Enviar 
+                        </TouchableOpacity></>
             </>
+        
             </ImageBackground>
         )
         /*
