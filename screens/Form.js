@@ -1,15 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, TextInput, StyleSheet,ImageBackground, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+const axios = require('axios');
 
     const  Form =({route,navigation: { goBack } })=>{
+        let ghostList = [];
+        const [preguntas, setPreguntas] = useState([]);
+        useEffect(() => {
+            axios.get(`http://localhost:5000/Formulario`)
+            .then(function (response) {
+                console.log(response.data);
+                ghostList=response.data
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {
+                console.log("Finally:")
+                console.log(ghostList)
+                setPreguntas(ghostList);
+            })
+        }, [])
         const [Text] = React.useState("hola");
         const [number] = React.useState(null);
         const Vuelta = ({PetCard}) => {
             const Navigation=useNavigation()
             Navigation.navigate("Home")
         }
+        console.log("preguntas:")
+        console.log(preguntas)
+        return(
+            <ImageBackground source={"https://static.vecteezy.com/system/resources/previews/002/705/240/non_2x/background-of-dog-paw-prints-vector.jpg"} resizeMode="cover" style={{width: '100%', height: '100%', opacity:'0,5'}}>
+            <>
+                <ScrollView style ={styles.Texto}>
+                    {
+                        preguntas.map(
+                            (i) => (
+                                <>
+                                    <Text>{i.Descripcion}</Text>
+                                    <TextInput
+                                    style={styles.input}
+                                    value={number}
+                                    placeholder="Respuesta"
+                                    keyboardType="numeric"
+                                    />
+                                </>
+                            )
+                        )
+                    }
+                </ScrollView>
+            </>
+            </ImageBackground>
+        )
+        /*
                 return(
                     <ImageBackground source={"https://t4.ftcdn.net/jpg/02/24/25/83/360_F_224258392_sHXo6ayHm30zziBvL77trFOUDSl9R3oA.jpg"} resizeMode="cover" style={{width: '100%', height: '100%', opacity:'0,5'}}> 
                     <ScrollView style={styles.image} >
@@ -112,6 +156,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
                     </ImageBackground>
         
                 )
+                */
             }
 
     const styles = StyleSheet.create({
