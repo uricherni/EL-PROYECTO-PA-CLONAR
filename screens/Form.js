@@ -31,14 +31,14 @@ const axios = require('axios');
         console.log("preguntas:")
         console.log(preguntas)
         return(
-            <ImageBackground source={"https://img.freepik.com/vector-premium/fondo-pantalla-huella-perro_591410-63.jpg"} resizeMode="cover"  blurRadius={3} style={{width: '100%', height: '100%', opacity:'0,5'}}>
+            <ImageBackground source={"https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png"} resizeMode="cover"  blurRadius={4} style={{width: '100%', height: '100%', opacity:'0,5'}}>
             <>
                 <ScrollView style ={styles.Texto}>
                     {
                         preguntas.map(
                             (i) => (
                                 <>
-                                    <Text>{i.Descripcion}</Text>
+                                    <Text>{i.Descripcion} </Text>
                                     <TextInput
                                     style={styles.input}
                                     value={number}
@@ -170,7 +170,7 @@ const axios = require('axios');
     const styles = StyleSheet.create({
         input: {
             backgroundColor: "white",
-        height: 20,
+        height: 30,
         margin: 12,
         borderWidth: 1,
         padding: 10,
@@ -180,10 +180,10 @@ const axios = require('axios');
        
         Texto:{
             color: 'Black',
-            fontSize: 15,
+            fontSize: 20,
             fontWeight: 'bold',
             marginLeft: "auto",
-            
+        
         },
         Enviar: {
             color: "black",
