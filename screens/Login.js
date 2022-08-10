@@ -19,27 +19,28 @@ const LogIn = () => {
   return (
 
     <View styles={{width:"100%"}}>
-  <Text>Ingrese nombre</Text>
+  <>
       <Image style={styles.img} source={require('../assets/logo.png')}></Image> 
-      <Text>Ingrese nombre</Text>
+      </>
+      <>
       <View style={styles.Texto}>
           <TextInput
           style={styles.input}
-          placeholder="Nombre"
+          placeholder="Nombre de usuario"
           keyboardType="numeric"
         />
       </View>
-      <Text>Ingrese contraseña</Text>
+      </>
       <View style={styles.Texto}>
-    
-        <TextInput
+      <br></br>
+        <TextInput 
           style={styles.input}
           placeholder="Contraseña"
           keyboardType="numeric"
           secureTextEntry={true}
         />
       </View>
-
+      
       <TouchableOpacity style={styles.Enviar} onPress={() => LogInUser()}>
         Sign In
       </TouchableOpacity>
