@@ -19,7 +19,7 @@ const LogIn = () => {
   return (
 
     <View styles={{width:"100%"}}>
-  
+  <Text>Ingrese nombre</Text>
       <Image style={styles.img} source={require('../assets/logo.png')}></Image> 
       <Text>Ingrese nombre</Text>
       <View style={styles.Texto}>

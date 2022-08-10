@@ -31,7 +31,7 @@ const axios = require('axios');
         console.log("preguntas:")
         console.log(preguntas)
         return(
-            <ImageBackground source={"https://img.freepik.com/vector-premium/fondo-pantalla-huella-perro_591410-63.jpg"} resizeMode="cover" style={{width: '100%', height: '100%', opacity:'0,5'}}>
+            <ImageBackground source={"https://img.freepik.com/vector-premium/fondo-pantalla-huella-perro_591410-63.jpg"} resizeMode="cover"  blurRadius={3} style={{width: '100%', height: '100%', opacity:'0,5'}}>
             <>
                 <ScrollView style ={styles.Texto}>
                     {
@@ -54,7 +54,7 @@ const axios = require('axios');
                         
                     }
                 </ScrollView>
-                <> <TouchableOpacity   style={styles.Enviar}>
+                <> <TouchableOpacity    blurRadius={3} style={styles.Enviar}>
                             Enviar 
                         </TouchableOpacity></>
             </>
@@ -170,7 +170,7 @@ const axios = require('axios');
     const styles = StyleSheet.create({
         input: {
             backgroundColor: "white",
-        height: 40,
+        height: 20,
         margin: 12,
         borderWidth: 1,
         padding: 10,
@@ -180,7 +180,7 @@ const axios = require('axios');
        
         Texto:{
             color: 'Black',
-            fontSize: 12,
+            fontSize: 15,
             fontWeight: 'bold',
             marginLeft: "auto",
             
@@ -192,8 +192,8 @@ const axios = require('axios');
             backgroundColor: "#03fff7",
             marginLeft: "auto",
             marginRight: "auto",
-            width: "300px",
-            height: "40px",
+            width: "100px",
+            height: "30px",
         },
   
       scrollView: {
