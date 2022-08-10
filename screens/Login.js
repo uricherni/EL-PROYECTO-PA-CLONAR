@@ -18,7 +18,7 @@ const LogIn = () => {
   }
   return (
 
-    <View styles={{width:"100%"}}>
+    <View style={{flex: 1,backgroundColor: '#6ED4C8'}}>
   <>
       <Image style={styles.img} source={require('../assets/logo.png')}></Image> 
       </>
@@ -32,7 +32,7 @@ const LogIn = () => {
       </View>
       </>
       <View style={styles.Texto}>
-      <br></br>
+      
         <TextInput 
           style={styles.input}
           placeholder="Contraseña"
@@ -48,23 +48,27 @@ const LogIn = () => {
 
   )
 }
+
 const styles = StyleSheet.create({
   Texto: {
     color: 'Black',
     fontSize: 12,
     fontWeight: 'bold',
   },
+  
   img:{
     margin:"3%",
     width: "94%",
     aspectRatio: 1
   },
   input: {
-
+    backgroundColor: "white",
     height: 40,
     margin: 2,
-    borderWidth: 3,
-    borderColor: '#090B0D',
+    borderWidth: 1,
+    padding: 10,
+   Color:"#000",
+   
     borderRadius: 30,
     padding: 10,
   },
