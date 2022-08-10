@@ -31,7 +31,7 @@ const axios = require('axios');
         console.log("preguntas:")
         console.log(preguntas)
         return(
-            <ImageBackground source={"https://static.vecteezy.com/system/resources/previews/002/705/240/non_2x/background-of-dog-paw-prints-vector.jpg"} resizeMode="cover" style={{width: '100%', height: '100%', opacity:'0,5'}}>
+            <ImageBackground source={"https://img.freepik.com/vector-premium/fondo-pantalla-huella-perro_591410-63.jpg"} resizeMode="cover" style={{width: '100%', height: '100%', opacity:'0,5'}}>
             <>
                 <ScrollView style ={styles.Texto}>
                     {
@@ -174,7 +174,7 @@ const axios = require('axios');
             color: 'Black',
             fontSize: 12,
             fontWeight: 'bold',
- 
+            marginLeft: "auto",
             
         },
         Enviar: {

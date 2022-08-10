@@ -1,9 +1,7 @@
 import {useNavigation} from "@react-navigation/native";
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import {Text, StyleSheet} from 'react-native';
 import {  Button, Card, Title } from 'react-native-paper';
-
 
 
 
@@ -55,3 +53,33 @@ export default PetCard;
 
 
 
+/*const axios = require('axios');
+
+    const  Form =({route,navigation: { goBack } })=>{
+        let ghostList = [];
+        const [Mascota, setMascota] = useState([]);
+        useEffect(() => {
+            axios.get(`http://localhost:5000/Mascota`)
+            .then(function (response) {
+                console.log(response.data);
+                ghostList=response.data
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {
+                console.log("Finally:")
+                console.log(ghostList)
+                setPreguntas(ghostList);
+            })
+        }, [])
+        const [Text] = React.useState("hola");
+        const [number] = React.useState(null);
+
+        const Vuelta = ({PetCard}) => {
+            const Navigation=useNavigation()
+            Navigation.navigate("Home")
+        }
+        console.log("Mascota")
+        console.log(Mascota)
+*/

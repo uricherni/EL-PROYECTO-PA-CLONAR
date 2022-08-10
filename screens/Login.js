@@ -21,18 +21,17 @@ const LogIn = () => {
     <View styles={{width:"100%"}}>
   
       <Image style={styles.img} source={require('../assets/logo.png')}></Image> 
-   
-      <View style={styles.Texto}>
       <Text>Ingrese nombre</Text>
+      <View style={styles.Texto}>
           <TextInput
           style={styles.input}
           placeholder="Nombre"
           keyboardType="numeric"
         />
       </View>
-      
-      <View style={styles.Texto}>
       <Text>Ingrese contraseña</Text>
+      <View style={styles.Texto}>
+    
         <TextInput
           style={styles.input}
           placeholder="Contraseña"

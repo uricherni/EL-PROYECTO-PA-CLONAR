@@ -13,8 +13,8 @@ const Home = ({}) => {
         
         <View style={styles.fondo}>
             
-            <Text>
-                Lista Mascotas para adoptar:
+            <Text style ={styles.Texto} >
+                Lista de mascotas para adoptar:
 
             </Text>
             {mascotas &&
@@ -46,6 +46,14 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    Texto:{
+        color: 'Black',
+        fontSize: 12,
+        fontWeight: 'bold',
+        flex:1
+        
+        
     },
    
 
