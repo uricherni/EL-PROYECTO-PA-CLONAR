@@ -4,22 +4,22 @@ import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const axios = require('axios');
 
-    const  Form =({route,navigation: { goBack } })=>{
-        let ghostList = [];
+    const  Form = ({route,navigation: { goBack } })=>{
+        let Formulario = [];
         const [preguntas, setPreguntas] = useState([]);
         useEffect(() => {
             axios.get(`http://localhost:5000/Formulario`)
             .then(function (response) {
                 console.log(response.data);
-                ghostList=response.data
+                Formulario = response.data
             })
             .catch(function (error) {
                 console.log(error);
             })
             .then(function () {
                 console.log("Finally:")
-                console.log(ghostList)
-                setPreguntas(ghostList);
+                console.log(Formulario)
+                setPreguntas(Formulario);
             })
         }, [])
         const [Text] = React.useState("hola");
@@ -36,9 +36,10 @@ const axios = require('axios');
                 <ScrollView style ={styles.Texto}>
                     {
                         preguntas.map(
-                            (i) => (
+                            (pregunta) => (
                                 <>
-                                    <Text>{i.Descripcion} </Text>
+                                    <Text>{pregunta.IdFormulario}</Text>
+                                    <Text>{pregunta.Descripcion} </Text>
                                     <TextInput
                                     style={styles.input}
                                     value={number}
@@ -61,111 +62,8 @@ const axios = require('axios');
         
             </ImageBackground>
         )
-        /*
-                return(
-                    <ImageBackground source={"https://t4.ftcdn.net/jpg/02/24/25/83/360_F_224258392_sHXo6ayHm30zziBvL77trFOUDSl9R3oA.jpg"} resizeMode="cover" style={{width: '100%', height: '100%', opacity:'0,5'}}> 
-                    <ScrollView style={styles.image} >
-
-                        <Text >
-                            Formulario Adoptar Animal
-                        </Text>
-                        <Text>
-                            El Id del refugio animal es: {route.params.id} Pepita
-                        </Text>
-                        <ScrollView style ={styles.Texto}>
-                            <Text>
-                                Pregunta 1:
-                                ¿está permitido tener perros en el lugar donde vivo?
-                            </Text>
-                            <TextInput
-                            style={styles.input}
-                            value={number}
-                            placeholder="Respuesta"
-                            keyboardType="numeric"
-                        />
-                        </ScrollView>
-                    
-                        <ScrollView style ={styles.Texto}>
-                            <Text>
-                                Pregunta 2:
-                                ¿tengo los recursos para cuidarlo y darle atención veterinaria si lo necesita?
-                            </Text>
-                            <TextInput
-                            style={styles.input}
-                            value={number}
-                            placeholder="Respuesta"
-                            keyboardType="numeric"
-                        />
-                        </ScrollView>
-                    
-                            <ScrollView style ={styles.Texto}>
-                                <Text>
-                                    Pregunta 3:
-                                    ¿El lugar en donde vivo está cerrado y es seguro para el perro?
-                                </Text>
-                                <TextInput
-                                style={styles.input}
-                                value={number}
-                                placeholder="Respuesta"
-                                keyboardType="numeric"
-                            />
-                            </ScrollView>
-                    
-                        <ScrollView style ={styles.Texto}>
-                            <Text>
-                                Pregunta 4:
-                                ¿Estoy dispuesto a asumir este compromiso con el perro para toda su vida?                   
-                            </Text>
-                            <TextInput
-                            style={styles.input}
-                            value={number}
-                            placeholder="Respuesta"
-                            keyboardType="numeric"
-                        />
-                        </ScrollView>
-                    
-                        <ScrollView style ={styles.Texto}>
-                            <Text>
-                                Pregunta 5:
-                                ¿Qué opinas sobre la castración?                    
-                            </Text>
-                            <TextInput
-                            style={styles.input}
-                            value={number}
-                            placeholder="Respuesta"
-                            keyboardType="numeric"
-                        />
-                        </ScrollView>
         
-                        <ScrollView style ={styles.Texto}>
-                            <Text>
-                                Pregunta 6:
-                                ¿Estarías de acuerdo en castrar cumplidos los 8 meses de edad?                    
-                                
-                            </Text>
-                            <TextInput
-                            style={styles.input}
-                            value={number}
-                            placeholder="Respuesta"
-                            keyboardType="numeric"
-                        />
-                        </ScrollView>
-                        
-
-                        <TouchableOpacity   style={styles.Enviar}>
-                            Enviar 
-                        </TouchableOpacity>
-                       
-                     
-
-
-                        
-                    </ScrollView>
-                    </ImageBackground>
-        
-                )
-                */
-            }
+        }
 
     const styles = StyleSheet.create({
         input: {

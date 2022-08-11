@@ -1,27 +1,8 @@
 import {useNavigation} from "@react-navigation/native";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {Text, StyleSheet} from 'react-native';
 import {  Button, Card, Title } from 'react-native-paper';
 
-
-const ListaDeMascotas = () => {
-
-
-    const [mascotas, setMascotas] = useState([]);
-
-    const fechMascotas = () => {
-
-         axios.get(`http://localhost:5000/Mascota`)
-        .then((res) => {
-
-            setMascotas(res.data);
-        })
-        .catch ((err) => {
-            console.log('err', err);
-        })
-    }
-}
 
 
 const PetCard = ({refugio, nombre, edad, estado,raza,descripcion,id}) => {
