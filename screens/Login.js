@@ -17,12 +17,12 @@ const LogIn = () => {
     }
   }
   return (
+<>
 
-    <View style={{flex: 1,backgroundColor: '#6ED4C8'}}>
-  <>
+<View style={{flex: 1,backgroundColor: '#6ED4C8'}}>
+  
       <Image style={styles.img} source={require('../assets/logo.png')}></Image> 
-      </>
-      <>
+     
       <View style={styles.Texto}>
           <TextInput
           style={styles.input}
@@ -30,7 +30,7 @@ const LogIn = () => {
           keyboardType="numeric"
         />
       </View>
-      </>
+    
       <View style={styles.Texto}>
       
         <TextInput 
@@ -45,6 +45,9 @@ const LogIn = () => {
         Sign In
       </TouchableOpacity>
     </View>
+
+</>
+    
 
   )
 }
