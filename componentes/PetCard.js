@@ -24,12 +24,12 @@ const ListaDeMascotas = () => {
 }
 
 
-/*const PetCard = ({refugio, nombre, edad, estado,raza,descripcion,id}) => {
+const PetCard = ({refugio, nombre, edad, estado,raza,descripcion,id}) => {
     const Navigation=useNavigation()
     function onClick(){
         // alert('el id es:'+ id)
         Navigation.navigate("Form", {id, name: nombre})
-    }*/
+    }
   
 return (
     
@@ -57,6 +57,10 @@ return (
 
   );
 
+}
+export default PetCard;
+
+
 const styles = StyleSheet.create({
     Imagen:{
         width: "100%",
@@ -65,7 +69,6 @@ const styles = StyleSheet.create({
     }
 
 });
-export default PetCard;
 
 
 
