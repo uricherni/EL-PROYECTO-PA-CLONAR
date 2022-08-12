@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 const axios = require('axios');
 
 const Imagen = (props) => {
@@ -35,4 +35,4 @@ const Imagen = (props) => {
     );
 }
 
-export default Imagen;
+export default Imagen;*/
