@@ -38,7 +38,6 @@ const  Form = ({route,navigation: { goBack } })=>{
                     preguntas.map(
                         (pregunta) => (
                             <>
-
                                 <Text>{pregunta.Descripcion} </Text>
                                 <TextInput
                                 style={styles.input}

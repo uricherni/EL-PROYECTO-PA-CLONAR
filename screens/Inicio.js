@@ -6,13 +6,13 @@ const Inicio = ({ navigation }) => {
     }
     return (
         <>
-        
+   
         <View style={styles.Fondo}>
            
-            <Text style={styles.Texto}>Bienvenido a Petfy</Text>
+        <Text style={styles.Texto}>Bienvenido a Petfy</Text>
             <Image style={styles.img} source={require('../assets/Inicio.png')}></Image>
             <TouchableOpacity style={styles.Enviar} onPress={login}>
-                Empezar
+                    Continuar
             </TouchableOpacity>
         </View>
         
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: 'bold',
         textAlign: "center",
-        fontSize: "80px",
+        fontSize: "72px",
     },
     img: {
         height:'40%',
