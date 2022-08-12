@@ -8,9 +8,8 @@ const Inicio = ({ navigation }) => {
         <>
         
         <View style={styles.Fondo}>
-            <View>
-                <Text style={styles.Texto}>Bienvenido a Petfy</Text>
-            </View>
+           
+            <Text style={styles.Texto}>Bienvenido a Petfy</Text>
             <Image style={styles.img} source={require('../assets/Inicio.png')}></Image>
             <TouchableOpacity style={styles.Enviar} onPress={login}>
                 Empezar

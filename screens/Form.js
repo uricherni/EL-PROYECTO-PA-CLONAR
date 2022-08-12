@@ -1,60 +1,69 @@
 import { useEffect, useState } from "react";
-import Pregunta from "./Components/Pregunta";
-import formData from "./Hooks/formData";
 import { View, TextInput, StyleSheet,ImageBackground, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const axios = require('axios');
 
-export default function Form() {
-    const [formValues, handleFormValueChange, setFormValues] = formData();
+const  Form = ({route,navigation: { goBack } })=>{
+    let Formulario = [];
     const [preguntas, setPreguntas] = useState([]);
     useEffect(() => {
-        axios.get("http://localhost:5000/Formulario")
-        .then(response => setPreguntas(response.data))
-        .catch(console.error)
+        axios.get(`http://localhost:5000/Formulario`)
+        .then(function (response) {
+            console.log(response.data);
+            Formulario = response.data
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        .then(function () {
+            console.log("Finally:")
+            console.log(Formulario)
+            setPreguntas(Formulario);
+        })
     }, [])
-    const onSubmit = () => {
-        // TODO: Validar form
-        
-        const postData = {  //  HARD CODED VALUES
-            "IdUsuario":    "1",
-            "IdFormulario": "1", 
-            "IDMascota":    "1",
-            "Descripcion": formValues,  
-        }
-
-        axios({
-            method: "POST",
-            json: postData,
-            url: "http://localhost:5000/Respuestas",
-        })
-        .then(() => {
-            // Show OK alert
-        })
-        .catch(() => {
-            // Show error alert
-        })
-
+    const [Text] = useState("hola");
+    const [number] = useState(null);
+    const Vuelta = ({PetCard}) => {
+        const Navigation=useNavigation()
+        Navigation.navigate("Home")
     }
-    return (
+    console.log("preguntas:")
+    console.log(preguntas)
+    return(
+        <ImageBackground source={"https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png"} resizeMode="cover"  blurRadius={4} style={{width: '100%', height: '100%', opacity:'0,5'}}>
         <>
-            {
-                preguntas.map(pregunta => 
-                    <Pregunta 
-                        label={pregunta.Descripcion}
-                        formKey={pregunta.IdFormulario}
-                        handleFormValueChange={handleFormValueChange}
-                    />
-            )}
-            <TouchableOpacity onPress={onSubmit} blurRadius={3} style={styles.Enviar}>
-                Enviar 
-            </TouchableOpacity>
+            <ScrollView style ={styles.Texto}>
+                {
+                    preguntas.map(
+                        (pregunta) => (
+                            <>
 
-        <ImageBackground source={"https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png"} resizeMode="cover"  blurRadius={4} style={{width: '100%', height: '100%', opacity:'0,5'}}></ImageBackground>
+                                <Text>{pregunta.Descripcion} </Text>
+                                <TextInput
+                                style={styles.input}
+                                value={number}
+                                placeholder="Respuesta"
+                                keyboardType="numeric"
+                                
+                                />
+                                
+                            </>
+                            
+                        )
+                    )
+                    
+                }
+            </ScrollView>
+            <> <TouchableOpacity    blurRadius={3} style={styles.Enviar}>
+                        Enviar 
+                    </TouchableOpacity></>
         </>
-    )
-}
+    
+        </ImageBackground>
+    )}
+
+    export default Form;
 
 const styles = StyleSheet.create({
     input: {

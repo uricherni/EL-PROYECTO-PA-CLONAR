@@ -20,7 +20,7 @@ return (
             
             <Card.Content>
 
-                    <Title>{mascotas.refugio}</Title>
+                    <Title>{refugio}</Title>
                     <Text> {nombre}</Text>
                     <Text> {edad}</Text>         
                     <Text> Estado: {estado}</Text>
