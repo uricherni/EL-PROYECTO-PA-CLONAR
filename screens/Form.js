@@ -7,6 +7,7 @@ const axios = require('axios');
 const  Form = ({route,navigation: { goBack } })=>{
     let Formulario = [];
     const [preguntas, setPreguntas] = useState([]);
+   
     useEffect(() => {
         axios.get(`http://localhost:5000/Formulario`)
         .then(function (response) {
@@ -30,6 +31,28 @@ const  Form = ({route,navigation: { goBack } })=>{
     }
     console.log("preguntas:")
     console.log(preguntas)
+
+    const [IdRespuesta, setIdRespuestaText] = React.useState('');
+
+    const [Descripcion, setDescripcionText] = React.useState('');
+    
+    const [IdFormulario, setIdFormularioText] = React.useState('');
+
+    const [IdUsuario, setIdUsuarioText] = React.useState('');
+
+    const [IdMascota, setIdMascotaText] = React.useState('');
+
+const Respuesta = ({route,navigation: { goBack } })=>{
+    axios.post(`http://localhost:5000/Respuestas${IdRespuesta}`, { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota})
+       
+    
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
     return(
         <ImageBackground source={"https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png"} resizeMode="cover"  blurRadius={4} style={{width: '100%', height: '100%', opacity:'0,5'}}>
         <>
@@ -54,8 +77,9 @@ const  Form = ({route,navigation: { goBack } })=>{
                     
                 }
             </ScrollView>
-            <> <TouchableOpacity    blurRadius={3} style={styles.Enviar}>
-                        Enviar 
+            <> <TouchableOpacity    blurRadius={3} style={styles.Enviar}  onPress={() => Respuesta(this)} >
+                
+                       <text> Enviar </text>
                     </TouchableOpacity></>
         </>
     
