@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { View, TextInput, StyleSheet,ImageBackground, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const axios = require('axios');
 
-const  Form = ({route,navigation: { goBack } })=>{
+const  Form = (params)=>{
     let Formulario = [];
     const [preguntas, setPreguntas] = useState([]);
    
@@ -32,18 +32,18 @@ const  Form = ({route,navigation: { goBack } })=>{
     console.log("preguntas:")
     console.log(preguntas)
 
-    const [IdRespuesta, setIdRespuestaText] = React.useState('');
+    const [IdRespuesta, setIdRespuestaText] = useState('');
 
-    const [Descripcion, setDescripcionText] = React.useState('');
+    const [Descripcion, setDescripcionText] = useState('');
     
-    const [IdFormulario, setIdFormularioText] = React.useState('');
+    const [IdFormulario, setIdFormularioText] = useState('');
 
-    const [IdUsuario, setIdUsuarioText] = React.useState('');
+    const [IdUsuario, setIdUsuarioText] = useState('');
 
-    const [IdMascota, setIdMascotaText] = React.useState('');
+    const [IdMascota, setIdMascotaText] = useState('');
 
-const Respuesta = ({route,navigation: { goBack } })=>{
-    axios.post(`http://localhost:5000/Respuestas${IdRespuesta}`, { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota})
+const Respuesta = (params)=>{
+    axios.post(`http://localhost:5000/Respuestas/${IdFormulario}`, { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota})
        
     
         .then(function (response) {
@@ -153,8 +153,8 @@ marginHorizontal: 20,
             setPreguntas(Formulario);
         })
     }, [])
-    const [Text] = React.useState("hola");
-    const [number] = React.useState(null);
+    const [Text] = useState("hola");
+    const [number] = useState(null);
     const Vuelta = ({PetCard}) => {
         const Navigation=useNavigation()
         Navigation.navigate("Home")
