@@ -2,7 +2,7 @@ import { TouchableOpacity, View, StyleSheet, Image,Text } from "react-native"
 
 const Inicio = ({ navigation }) => {
     function login() {
-        navigation.navigate("LogIn")
+        navigation.navigate("Registrarse")
     }
     return (
         <>
@@ -12,7 +12,7 @@ const Inicio = ({ navigation }) => {
         <Text style={styles.Texto}>Bienvenido a Petfy</Text>
             <Image style={styles.img} source={require('../assets/Inicio.png')}></Image>
             <TouchableOpacity style={styles.Enviar} onPress={login}>
-                    Continuar
+                    <Text>Continuar</Text>
             </TouchableOpacity>
         </View>
         
