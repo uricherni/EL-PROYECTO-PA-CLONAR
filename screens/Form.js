@@ -43,7 +43,7 @@ const  Form = (params)=>{
     const [IdMascota, setIdMascotaText] = useState('');
 
 const Respuesta = (params)=>{
-    axios.post(`http://localhost:5000/Respuesta/${IdFormulario}`, { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota})
+    axios.post(`http://localhost:5000/Respuesta`, { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota})
        
     
         .then(function (response) {
