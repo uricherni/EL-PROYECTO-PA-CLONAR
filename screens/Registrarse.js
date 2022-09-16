@@ -1,4 +1,4 @@
-import { TouchableOpacity, View, Image, StyleSheet } from "react-native"
+import { TouchableOpacity, View, Image, StyleSheet, Text } from "react-native"
 
 
 export default function Registrarse({ navigation }) {
@@ -17,10 +17,10 @@ export default function Registrarse({ navigation }) {
                     onPress={redirect}
                     style={{ width: 200, height: 200, flex: 2,marginLeft: "20%",marginTop: "20%" }}
                 >
+                    <View style={styles.Person}> <Text>Registrarse mediante persona</Text>  </View>
                     <Image
                         style={styles.img}
                         source={require('../assets/registerIcon.png')}>
-
 
                     </Image>
                 </TouchableOpacity>
@@ -28,10 +28,10 @@ export default function Registrarse({ navigation }) {
                     onPress={redirect}
                     style={{ width: 200, height: 200,flex: 2, marginLeft: "20%"}}
                 >
+                    <View style={styles.Person}> <Text> Registrarse mediante refugio </Text> </View>
                     <Image style={styles.img}
                         source={require('../assets/houseIcon.png')}
                     >
-
 
                     </Image>
                 </TouchableOpacity>
@@ -52,6 +52,12 @@ const styles = StyleSheet.create({
         padding: 20,
         flex: 1
     },
+    Person: {
+        fontSize: '25px',
+        fontfamily: 'Monospace',
+        textAlign: "center",
+    },
+
    
 
 })
