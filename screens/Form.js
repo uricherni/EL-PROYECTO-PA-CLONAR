@@ -41,11 +41,14 @@ const  Form = (params)=>{
     const [IdUsuario, setIdUsuarioText] = useState('');
 
     const [IdMascota, setIdMascotaText] = useState('');
-
+   
 const Respuesta = (params)=>{
-    axios.post(`http://localhost:5000/Respuesta`, { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota})
-       
-    
+let req = { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota};
+    console.log(req)
+    axios.post(`http://localhost:5000/Respuesta`, req)
+       setDescripcionText(Descripcion)
+
+                            
         .then(function (response) {
             console.log(response);
         })
