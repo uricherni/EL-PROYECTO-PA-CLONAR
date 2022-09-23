@@ -10,12 +10,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
  */
 import MainStack from './stacks/MainStack';
 import ComprasStack from './stacks/ComprasStack';
+import AplicantesStack from './stacks/AplicantesStack';
 
 const Tab = createBottomTabNavigator();
 
 const PAGES = {
   homeStack: 'Home',
-  comprasStack: 'Compras'
+  comprasStack: 'Compras',
+  AplicantesStack: 'Aplicante'
 }
 
 const MainNavigation = () => {
@@ -33,6 +35,9 @@ const MainNavigation = () => {
         iconName = focused ? 'list' : 'list-outline';
 
       }
+      else if (rn === PAGES.AplicantesStack) {
+        iconName = focused ? 'person' : 'person';
+      }
       return <Ionicons name={iconName} size={size} color={color} />;
     }
   })
@@ -43,11 +48,15 @@ const MainNavigation = () => {
         name={PAGES.homeStack}
         component={MainStack}
       />
-
+      <Tab.Screen
+        name={PAGES.AplicantesStack}
+        component={AplicantesStack}
+      />
       <Tab.Screen
         name={PAGES.comprasStack}
         component={ComprasStack}
       />
+
     </Tab.Navigator>
 
   )

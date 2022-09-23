@@ -13,10 +13,12 @@ const StackMain = () => {
     return (
         <Stack.Navigator>
             <Stack.Screen
+                options= {{headerShown: false}}
                 name='Home'
                 component={Home}
             />
             <Stack.Screen
+                options= {{headerShown: true}}
                 name='Form'
                 component={Form}
             />

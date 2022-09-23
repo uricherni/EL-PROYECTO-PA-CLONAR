@@ -11,19 +11,23 @@ const NotAuthStack= () => {
     return (
         <Stack.Navigator>
             <Stack.Screen
+                options= {{headerShown: false}}
                 name='Inicio'
                 component={Inicio}
             />
              <Stack.Screen
+                options= {{headerShown: false}}
                 name='Registrarse'
                 component={Registrarse}
             />
 
             <Stack.Screen
+                options= {{headerShown: false}}
                 name='LogIn'
                 component={LogIn}
             />
             <Stack.Screen
+                options= {{headerShown: false}}
                 name='cuenta'
                 component={cuenta}
             />

@@ -43,7 +43,13 @@ const Form = (params) => {
 
     const Respuesta = (params) => {
        
-        let req = {IdPregunta: IdPregunta, Descripcion: Descripcion, IdPostulacion: IdPostulacion };
+        let req = 
+                [
+                        {IdPregunta: 1, Descripcion: '', IdPostulacion: IdPostulacion },
+                        {IdPregunta: 2, Descripcion: '', IdPostulacion: IdPostulacion },
+                        {IdPregunta: 3, Descripcion: '', IdPostulacion: IdPostulacion },
+                        {IdPregunta: 4, Descripcion: '', IdPostulacion: IdPostulacion }
+                ];
         console.log(req)
         axios.post(`http://localhost:5000/Respuesta`, req)
             .then(function (response) {
