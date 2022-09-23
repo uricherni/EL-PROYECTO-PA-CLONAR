@@ -12,7 +12,7 @@ const Inicio = ({ navigation }) => {
         <Text style={styles.Texto}>Bienvenido a Petfy</Text>
             <Image style={styles.img} source={require('../assets/Inicio.png')}></Image>
             <TouchableOpacity style={styles.Enviar} onPress={login}>
-                    <View>Continuar</View>
+                    <View><p>Continuar</p></View>
             </TouchableOpacity>
         </View>
         

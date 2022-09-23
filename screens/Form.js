@@ -9,7 +9,7 @@ const  Form = (params)=>{
     const [preguntas, setPreguntas] = useState([]);
    
     useEffect(() => {
-        axios.get(`http://localhost:5000/Formulario`)
+        axios.get(`http://localhost:5000/Pregunta`)
         .then(function (response) {
             console.log(response.data);
             Formulario = response.data
