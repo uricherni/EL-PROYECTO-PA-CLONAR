@@ -32,7 +32,7 @@ const Form = (params) => {
     console.log("preguntas:")
     console.log(preguntas)
 
-    const [IdRespuesta, setIdRespuestaText] = useState('');
+
 
     const [Descripcion, setDescripcionText] = useState('');
 
@@ -42,16 +42,14 @@ const Form = (params) => {
 
 
     const Respuesta = (params) => {
-        let IdUsuario = 1;
-        let IdMascota = 2;
-        let req = { IdRespuesta: IdRespuesta, IdPregunta: IdPregunta, Descripcion: Descripcion, IdPostulacion: IdPostulacion };
+       
+        let req = {IdPregunta: IdPregunta, Descripcion: Descripcion, IdPostulacion: IdPostulacion };
         console.log(req)
         axios.post(`http://localhost:5000/Respuesta`, req)
             .then(function (response) {
                 setDescripcionText(Descripcion)
                 setIdPreguntaText(IdPregunta)
                 setIdPostulacionText(IdPostulacion)
-                setIdRespuestaText(IdRespuesta)
                 console.log(response);
             })
             .catch(function (error) {
@@ -82,7 +80,7 @@ const Form = (params) => {
 
                     }
                 </ScrollView>
-                <> <TouchableOpacity blurRadius={3} style={styles.Enviar} onPress={() => Respuesta(this)} >
+                <> <TouchableOpacity blurRadius={3} style={styles.Enviar} onPress={() => Respuesta(Descripcion)} >
 
                     <text> Enviar </text>
                 </TouchableOpacity></>
