@@ -80,7 +80,7 @@ const Form = (params) => {
 
                     }
                 </ScrollView>
-                <> <TouchableOpacity blurRadius={3} style={styles.Enviar} onPress={() => Respuesta(Descripcion)} >
+                <> <TouchableOpacity blurRadius={3} style={styles.Enviar} onPress={() => Respuesta(Descripcion.IdPregunta)} >
 
                     <text> Enviar </text>
                 </TouchableOpacity></>
