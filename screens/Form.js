@@ -36,19 +36,22 @@ const  Form = (params)=>{
 
     const [Descripcion, setDescripcionText] = useState('');
     
-    const [IdFormulario, setIdFormularioText] = useState('');
+    const [IdPostulacion, setIdPostulacionText] = useState('');
 
-    const [IdUsuario, setIdUsuarioText] = useState('');
-
-    const [IdMascota, setIdMascotaText] = useState('');
+    const [IdPregunta, setIdPreguntaText] = useState('');
+    
    
 const Respuesta = (params)=>{
-let req = { IdRespuesta:IdRespuesta,Descripcion:Descripcion,IdFormulario:IdFormulario,IdUsuario:IdUsuario, IdMascota:IdMascota};
+    let IdUsuario = 1;
+    let IdMascota = 2;
+let req = { IdRespuesta:IdRespuesta,IdPregunta:IdPregunta,Descripcion:Descripcion,IdPostulacion:IdPostulacion};
     console.log(req)
     axios.post(`http://localhost:5000/Respuesta`, req)
        setDescripcionText(Descripcion)
+       setIdPreguntaText(IdPregunta)
+       setIdPostulacionText(IdPostulacion)     
+       setIdRespuestaText(IdRespuesta)       
 
-                            
         .then(function (response) {
             console.log(response);
         })
