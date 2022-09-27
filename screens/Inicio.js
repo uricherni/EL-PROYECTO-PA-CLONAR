@@ -1,12 +1,11 @@
 import { TouchableOpacity, View, StyleSheet, Image,Text } from "react-native"
 
-const Inicio = ({ navigation }) => {
+export default Inicio = ({ navigation }) => {
     function login() {
         navigation.navigate("Registrarse")
     }
     return (
-        <>
-   
+    
         <View style={styles.Fondo}>
            
         <Text style={styles.Texto}>Bienvenido a Petfy</Text>
@@ -15,9 +14,6 @@ const Inicio = ({ navigation }) => {
             Continuar
             </TouchableOpacity>
         </View>
-        
-        </>
-        
         
     )
 }
