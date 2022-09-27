@@ -6,18 +6,10 @@ const Inicio = ({ navigation }) => {
     }
     return (
         <>
-<<<<<<< HEAD
-
-            <View style={styles.Fondo}>
-                <View>
-                <Text style={styles.Texto}>Bienvenido a Petfy</Text>
-            </View>
-=======
    
         <View style={styles.Fondo}>
            
         <Text style={styles.Texto}>Bienvenido a Petfy</Text>
->>>>>>> 902c314528e5d55d92c5e9dfdfcd664c367cda68
             <Image style={styles.img} source={require('../assets/Inicio.png')}></Image>
             <TouchableOpacity style={styles.Enviar} onPress={login}>
             Continuar
