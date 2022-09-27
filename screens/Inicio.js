@@ -7,8 +7,8 @@ const Inicio = ({ navigation }) => {
     return (
         <>
         
-        <View style={styles.Fondo}>
-            <View>
+            <View style={styles.Fondo}>
+                <View>
                 <Text style={styles.Texto}>Bienvenido a Petfy</Text>
             </View>
             <Image style={styles.img} source={require('../assets/Inicio.png')}></Image>
