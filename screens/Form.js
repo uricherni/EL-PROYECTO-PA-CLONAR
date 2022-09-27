@@ -1,60 +1,102 @@
-import { useEffect, useState } from "react";
-import Pregunta from "./Components/Pregunta";
-import formData from "./Hooks/formData";
-import { View, TextInput, StyleSheet,ImageBackground, ScrollView } from "react-native";
+import { React, useEffect, useState } from "react";
+import { View, TextInput, StyleSheet, ImageBackground, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const axios = require('axios');
 
-export default function Form() {
-    const [formValues, handleFormValueChange, setFormValues] = formData();
+const Form = (params) => {
+    let Formulario = [];
     const [preguntas, setPreguntas] = useState([]);
+
     useEffect(() => {
-        axios.get("http://localhost:5000/Formulario")
-        .then(response => setPreguntas(response.data))
-        .catch(console.error)
+        axios.get(`http://localhost:5000/Pregunta`)
+            .then(function (response) {
+                console.log(response.data);
+                Formulario = response.data
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+            .then(function () {
+                console.log("Finally:")
+                console.log(Formulario)
+                setPreguntas(Formulario);
+            })
     }, [])
-    const onSubmit = () => {
-        // TODO: Validar form
-        
-        const postData = {  //  HARD CODED VALUES
-            "IdUsuario":    "1",
-            "IdFormulario": "1", 
-            "IDMascota":    "1",
-            "Descripcion": formValues,  
-        }
+    const [Text] = useState("hola");
+    const [number] = useState(null);
+    const Vuelta = ({ PetCard }) => {
+        const Navigation = useNavigation()
+        Navigation.navigate("Home")
+    }
+    console.log("preguntas:")
+    console.log(preguntas)
 
-        axios({
-            method: "POST",
-            json: postData,
-            url: "http://localhost:5000/Respuestas",
-        })
-        .then(() => {
-            // Show OK alert
-        })
-        .catch(() => {
-            // Show error alert
-        })
 
+
+    const [Descripcion, setDescripcionText] = useState('');
+
+    const [IdPostulacion, setIdPostulacionText] = useState('');
+
+    const [IdPregunta, setIdPreguntaText] = useState('');
+
+
+    const Respuesta = (params) => {
+       
+        let req = 
+                [
+                        {IdPregunta: 1, Descripcion: '', IdPostulacion: IdPostulacion },
+                        {IdPregunta: 2, Descripcion: '', IdPostulacion: IdPostulacion },
+                        {IdPregunta: 3, Descripcion: '', IdPostulacion: IdPostulacion },
+                        {IdPregunta: 4, Descripcion: '', IdPostulacion: IdPostulacion }
+                ];
+        console.log(req)
+        axios.post(`http://localhost:5000/Respuesta`, req)
+            .then(function (response) {
+                setDescripcionText(Descripcion)
+                setIdPreguntaText(IdPregunta)
+                setIdPostulacionText(IdPostulacion)
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     }
     return (
-        <>
-            {
-                preguntas.map(pregunta => 
-                    <Pregunta 
-                        label={pregunta.Descripcion}
-                        formKey={pregunta.IdFormulario}
-                        handleFormValueChange={handleFormValueChange}
-                    />
-            )}
-            <TouchableOpacity onPress={onSubmit} blurRadius={3} style={styles.Enviar}>
-                Enviar 
-            </TouchableOpacity>
+        <ImageBackground source={"https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png"} resizeMode="cover" blurRadius={4} style={{ width: '100%', height: '100%', opacity: '0,5' }}>
+            <>
+                <ScrollView style={styles.Texto}>
+                    {
+                        preguntas.map(
+                            (pregunta) => (
+                                <>
+                                    <Text>{pregunta.Descripcion} </Text>
+                                    <TextInput
+                                        style={styles.input}
+                                        value={number}
+                                        placeholder="Respuesta"
+                                        keyboardType="numeric"
 
-        <ImageBackground source={"https://i.pinimg.com/originals/29/8f/da/298fdab6747599714130d5670b81ceee.png"} resizeMode="cover"  blurRadius={4} style={{width: '100%', height: '100%', opacity:'0,5'}}></ImageBackground>
-        </>
+                                    />
+
+                                </>
+
+                            )
+                        )
+
+                    }
+                </ScrollView>
+                <> <TouchableOpacity blurRadius={3} style={styles.Enviar} onPress={() => Respuesta(Descripcion.IdPregunta)} >
+
+                    <text> Enviar </text>
+                </TouchableOpacity></>
+            </>
+
+        </ImageBackground>
     )
 }
+
+export default Form;
 
 const styles = StyleSheet.create({
     input: {
@@ -63,15 +105,15 @@ const styles = StyleSheet.create({
         margin: 12,
         borderWidth: 1,
         padding: 10,
-        Color:"#000",
+        Color: "#000",
     },
-    
-    Texto:{
+
+    Texto: {
         color: 'Black',
         fontSize: 20,
         fontWeight: 'bold',
         marginLeft: "auto",
-    
+
     },
     Enviar: {
         color: "black",
@@ -84,10 +126,10 @@ const styles = StyleSheet.create({
         height: "30px",
     },
 
-  scrollView: {
-backgroundColor: 'pink',
-marginHorizontal: 20,
-},
+    scrollView: {
+        backgroundColor: 'pink',
+        marginHorizontal: 20,
+    },
     Cancelar: {
         color: "black",
         border: "5px solid black",
@@ -99,7 +141,7 @@ marginHorizontal: 20,
         height: "40px",
         marginTop: "20px"
     },
-    
+
 
 });
 
@@ -121,8 +163,8 @@ marginHorizontal: 20,
             setPreguntas(Formulario);
         })
     }, [])
-    const [Text] = React.useState("hola");
-    const [number] = React.useState(null);
+    const [Text] = useState("hola");
+    const [number] = useState(null);
     const Vuelta = ({PetCard}) => {
         const Navigation=useNavigation()
         Navigation.navigate("Home")

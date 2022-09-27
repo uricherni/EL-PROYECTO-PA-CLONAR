@@ -6,6 +6,9 @@ import UserServicies from "../services/UserServicies"
 
 const LogIn = () => {
   const { SetUser } = useUser()
+  function onClick(){
+    navigation.navigate("cuenta");
+}
   const LogInUser = async () => {
     try {
       const islogged = await UserServicies.login("Uri", "1234")
@@ -44,6 +47,11 @@ const LogIn = () => {
       <TouchableOpacity style={styles.Enviar} onPress={() => LogInUser()}>
         Sign In
       </TouchableOpacity>
+      <TouchableOpacity style={styles.Enviar} onTouchStart={onClick}>
+          <Text> 
+            ¿Aun no te registraste?
+          </Text>
+        </TouchableOpacity>
     </View>
 
 </>

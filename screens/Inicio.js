@@ -2,18 +2,25 @@ import { TouchableOpacity, View, StyleSheet, Image,Text } from "react-native"
 
 const Inicio = ({ navigation }) => {
     function login() {
-        navigation.navigate("LogIn")
+        navigation.navigate("Registrarse")
     }
     return (
         <>
-        
+<<<<<<< HEAD
+
             <View style={styles.Fondo}>
                 <View>
                 <Text style={styles.Texto}>Bienvenido a Petfy</Text>
             </View>
+=======
+   
+        <View style={styles.Fondo}>
+           
+        <Text style={styles.Texto}>Bienvenido a Petfy</Text>
+>>>>>>> 902c314528e5d55d92c5e9dfdfcd664c367cda68
             <Image style={styles.img} source={require('../assets/Inicio.png')}></Image>
             <TouchableOpacity style={styles.Enviar} onPress={login}>
-                Empezar
+            Continuar
             </TouchableOpacity>
         </View>
         
@@ -22,7 +29,7 @@ const Inicio = ({ navigation }) => {
         
     )
 }
-export default Inicio
+
 
 const styles = StyleSheet.create({
     Fondo: {
@@ -49,7 +56,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: 'bold',
         textAlign: "center",
-        fontSize: "80px",
+        fontSize: "72px",
     },
     img: {
         height:'40%',
