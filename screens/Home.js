@@ -21,11 +21,11 @@ const Home = ({}) => {
                 <View style={ContenedorCards.container}>
                     {mascotas.map((mascota) => {
                         return <PetCard
-                            refugio={mascota.refugio}
+                            refugio={mascota.nombreRefugio}
                             nombre={mascota.nombre}
                             edad={mascota.edad}
                             estado={mascota.estado}
-                            raza={mascota.raza}
+                            raza={mascota.nombreRaza}
                             descripcion={mascota.descripcion}
                             foto={mascota.foto}
                             id={mascota.id}

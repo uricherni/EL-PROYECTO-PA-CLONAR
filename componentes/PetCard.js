@@ -2,18 +2,33 @@ import {useNavigation} from "@react-navigation/native";
 import React, { useEffect, useState } from "react";
 import {Text, StyleSheet} from 'react-native';
 import {  Button, Card, Title } from 'react-native-paper';
-import Axios from "axios";
+import axios from "axios";
 
 
-const PetCard = ({refugio, nombre, edad, estado,raza,descripcion,id}) => {
+const PetCard = ({mascota}) => {
+
     
-    
-    
-    const Navigation=useNavigation()
-    
-    function onClick(){
-        // alert('el id es:'+ id)
-        Navigation.navigate("Form", {id, name: nombre})
+    const Navigation = useNavigation()
+
+    const {nombre, edad, estado, descripcion, foto, nombreRefugio, nombreRaza} = mascota;
+
+
+    const BodyPostulacion = {
+        
+        IdUsuario: 2,
+        IdMascota: 6,
+        Aceptado: 1,
+    }
+
+
+    const onClick = async () => {
+        const {data} = await axios.post({
+            url: 'http://localhost:5000/Respuesta',
+            data: BodyPostulacion
+        }    
+        )
+        console.log(data)
+        Navigation.navigate("Form")
     }
   
 return (
@@ -24,22 +39,20 @@ return (
             
             <Card.Content>
 
-                    <Title>{refugio}</Title>
+                    <Title>{nombreRefugio}</Title>
                     <Text> {nombre}</Text>
-                    <Text> {edad}</Text>         
+                    <Text> {edad}</Text>    
+                    <Text> {foto}</Text>     
                     <Text> Estado: {estado}</Text>
-                    <Text> Raza: {raza}</Text>
+                    <Text> Raza: {nombreRaza}</Text>
                     <Text> {descripcion}</Text>
             </Card.Content>
                 <Card.Cover source={{ uri: 'https://imagenes.20minutos.es/files/og_thumbnail/uploads/imagenes/2019/07/20/1012478.jpg' }} />
                 <Card.Actions>
-                    <Button onTouchStart={onClick}> Aplicar </Button>
+                    <Button onTouchStart={onClick}>Aplicar</Button>
                 </Card.Actions>
                 
         </Card>
-        
- 
-
   );
 
 }
